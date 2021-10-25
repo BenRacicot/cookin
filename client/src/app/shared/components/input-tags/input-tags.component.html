@@ -1,0 +1,64 @@
+<div
+    class="addTag floating-label"
+    [ngClass]="{float: float, disabled: disabled, single__tag: single}"
+>
+    <input
+        [(ngModel)]="value"
+        class="floating-label__input"
+        [type]="type"
+        [name]="name"
+        (blur)="onBlur($event)"
+        (focus)="onFocus($event)"
+        (keydown.enter)="addTags($event.target.value)"
+        placeholder=" "
+        autocomplete="off"
+        [disabled]="disabled"
+        [minlength]="minLength"
+        [maxlength]="maxLength"
+        tabindex="0"
+    />
+
+    <div class="floating-label__outline">
+        <div class="floating-label__leading"></div>
+        <div class="floating-label__notch">
+            <label class="floating-label__label" for="{{ label }}">{{
+                label
+            }}</label>
+        </div>
+        <div class="floating-label__trailing"></div>
+    </div>
+
+    <ng-container>
+        <div class="tags">
+            <p
+                *ngFor="let control of tagsArray.controls; index as i"
+                class="chip__blue chip__sm chip__sq"
+            >
+                <ng-container *ngIf="displayKeys; else strings">
+                    {{ findMatch(control.value) }}
+                </ng-container>
+
+                <ng-template #strings>
+                    {{ control.value }}
+                </ng-template>
+                <span class="icon" (click)="removeTag(i)">circle-x</span>
+            </p>
+        </div>
+    </ng-container>
+
+    <!-- if there is source to filter -->
+    <label
+        *ngIf="typeAhead"
+        typeahead-dropdown
+        ngModel
+        [active]="dropdownActive"
+        [term]="value"
+        [source]="typeAhead"
+        [displayKeys]="displayKeys"
+        [filterKeys]="filterKeys"
+        (selectionOutput)="addTags([$event])"
+    >
+    </label>
+
+    <!-- <input-validation [formGroup]="form"></input-validation> -->
+</div>

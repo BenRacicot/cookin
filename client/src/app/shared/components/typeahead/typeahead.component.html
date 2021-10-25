@@ -1,0 +1,21 @@
+<div
+    class="dropdown"
+    [ngClass]="{active: active && this.sourceFiltered?.length > 0}"
+>
+    <ul class="dropdown__list" tabindex>
+        <li *ngFor=" let result of sourceFiltered; let i = index; trackBy: trackByFn"
+            class="dropdown__link"
+            [ngClass]="{selectable: arrow === i}"
+            [attr.result-id]="result.id"
+            (click)="select(result)">
+            <ng-container *ngIf="displayKeys; else strings">
+                <ng-container *ngFor="let key of displayKeys">
+                    {{ result[key] }}
+                </ng-container>
+            </ng-container>
+            <ng-template #strings>
+                {{ result }}
+            </ng-template>
+        </li>
+    </ul>
+</div>

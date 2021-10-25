@@ -1,0 +1,70 @@
+/* ------------------------------------------------------------------------ *
+    GLOBAL CSS VARIABLES
+    naming: https://medium.com/@amcdnl/theming-angular-with-css-variables-3c78a5b20b24
+* ------------------------------------------------------------------------ */
+:root {
+    // COLORS
+    --primary-color: 255, 48, 8; // #FF3008
+    --secondary-color: 245, 248, 250; 
+    --tertiary: 241, 249, 255;
+    --red: 255, 132, 132;
+    --green: 128, 255, 167;
+
+    /* ------------------------------------------------------------------------ *
+        FORM & INPUT COLORS
+    * ------------------------------------------------------------------------ */
+    --field-background: 61, 61, 61;
+    --field-background-focused: 45, 45, 45;
+    --static-border-color: 223, 225, 229; // Google's news results
+    --hover-border-color: rgba(255, 48, 8, 0.87);
+    --focused-border-color: 33, 150, 243;
+
+    // disabled floating-label colors
+    --disabled-border-color: rgba(255, 48, 8, 0.24);
+    --append-prepend-disabled: #d7e9f8;
+    --append-prepend-disabled-text: #7ac4ff;
+
+    /* ------------------------------------------------------------------------ *
+        BACKGROUNDS & SOLIDS
+    * ------------------------------------------------------------------------ */
+    --background: 255, 255, 255;
+    --light-gray-bg: 245, 248, 254;
+    --border: 218, 220, 224;
+    --border-hover: 214, 214, 214;
+
+    /* ------------------------------------------------------------------------ *
+        TYPOGRAPHY
+        https://material.io/guidelines/style/typography.html#typography-other-typographic-guidelines
+    * ------------------------------------------------------------------------ */
+    --sans-serif: 'Helvetica Neue', Helvetica, 'open sans', Arial,
+        'Lucida Grande', sans-serif;
+    --heading-text: 115, 115, 115;
+    --body-text: 32, 32, 32;
+    --light-text: 128, 128, 128;
+    --dark-text: 115, 115, 115;
+    --disabled-text: 128, 128, 128;
+
+    // TWITTER BRANDED TEXT (light)
+    --twitter-font-stack: 'Segoe UI', Roboto, Ubuntu, 'Helvetica Neue',
+        sans-serif;
+    --twitter-heading-text: 20, 23, 26;
+    --twitter-body-text: 20, 23, 26;
+    --twitter-dark-text: 101, 119, 134;
+    --twitter-blue: 27, 149, 224;
+    --twitter-disabled-text: 128, 128, 128;
+
+    /* ------------------------------------------------------------------------ *
+        LAYOUT VALUES
+    * ------------------------------------------------------------------------ */
+    --grid-columns: auto-fit;
+    --label-flex: 0 0 auto; // input-check's label
+
+    /* ------------------------------------------------------------------------ *
+        MISC & SHARED STYLES
+    * ------------------------------------------------------------------------ */
+    --chip: 112, 112, 112;
+    --hr: 0, 0, 0, 0.12;
+
+    // other disabled colors
+    --disabled-color: 239, 239, 239;
+}

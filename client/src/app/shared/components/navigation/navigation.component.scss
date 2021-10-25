@@ -1,0 +1,115 @@
+:host {
+    justify-content: center;
+    align-content: flex-end;
+    width: 100%;
+    height: 60vh;
+    border-bottom: 1px solid rgb(var(--static-border-color));
+
+    background-image: url('/assets/images/veggies-2.png'); 
+	background-size: cover;
+	background-repeat: no-repeat;
+    &::before{
+        content: '';
+        position:absolute;
+        width:100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: -1;
+        transition: 0.15s ease-out;
+    }
+    &.closed{
+        height: 80px;
+        &::before{
+            content: '';
+            background-color: rgba(255, 255, 255, 1);
+        }
+        .home__logo {
+            opacity: 0;
+        }
+    }
+}
+.nav__wrapper {
+    width: 100%;
+    max-width: 650px;
+    padding: 0 0 10vh;
+}
+
+// HOME LOGO
+.home__logo {
+    width:100%;
+    opacity: 1;
+    transition: 0.15s ease-out;
+    .logo__wrapper,
+    .wordmark__wrapper {
+        justify-content: center;
+        width: 100%;
+        padding: 15px;
+    }
+    .logo {
+        max-width: 125px;
+    }    
+    .wordmark {
+        max-width: 400px;
+    }    
+}
+
+/* ------------------------------------------------------------------------ *  
+    RESPONSIVE SEARCH
+* ------------------------------------------------------------------------ */
+
+// OPEN NAVIGATION STYLES
+.form__wrapper {
+    position:relative;
+    width:100%;
+    transition: 0.15s ease-out;
+    .logo {
+        align-self: flex-start;
+        width: 100%;
+        max-width: 400px;
+        z-index: 999;
+    }    
+}
+.nav__search {
+    flex: 1;
+    max-width: calc(100% - 140px); // leave room for the logo
+    margin: 0 auto 0 auto;
+    padding: 0;
+    transition: 0.15s ease-out;
+}
+// NAV LOGO
+.nav__logo {
+    align-items: center;
+    position:absolute;
+    width: 100%;
+    height: 44px;
+    padding: 0 20px 0 0;
+    transition: 0.5s ease-in-out;
+}
+.nav__logo__link {
+    position:relative;
+    left: 125px;
+    width: 125px;
+    height: 30px;
+    border-radius: 8px;
+    transition: 0.5s ease-in-out;
+}
+@media only screen and (min-width: 580px) {
+    // CLOSED NAV STYLES
+    :host { 
+        &.closed{
+            .nav__wrapper {
+                padding: 0 0 15px 0;
+            }            
+            .form__wrapper {}            
+            .nav__logo {
+                margin-left: 0;
+            }
+            .nav__logo__link {
+                left:0;
+            }
+            .nav__search {
+                margin: 0 0 0 auto;
+            }
+        }
+    }
+}

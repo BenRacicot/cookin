@@ -1,0 +1,30 @@
+// native select element styles
+select {
+}
+
+// resused select styles (eg. input-select)
+.select {
+    width: 100%;
+    height: inherit;
+    min-height: 20px;
+    padding: 0 30px 0 17px;
+    appearance: none;
+    border-radius: 4px;
+    line-height: 36px;
+    background: rgb(var(--background));
+    font-size: 16px;
+    & + .dropdown {
+        .dropdown__link {
+            max-width: 100%; // capped for ellipsis
+        }
+    }
+}
+.select__selected {
+    align-items: center;
+    min-width: 25px;
+    padding: 0 0 0 0;
+    color: rgb(var(--body-text));
+    &::selection {
+        background: transparent;
+    }
+}

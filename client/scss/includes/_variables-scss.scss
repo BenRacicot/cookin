@@ -1,0 +1,13 @@
+/* ------------------------------------------------------------------------ *
+    COMPONENT LIST
+    this is for a list of nested components
+* ------------------------------------------------------------------------ */
+$components: 'header', 'body', 'review';
+$prefix: 'app';
+// Run through each app-^ component element that should be display:grid;
+// @each $component in $components {
+//     #{$prefix}-#{$component}{
+//         display:grid;
+//         grid-column: 1 / -1;
+//     }
+// }

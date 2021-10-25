@@ -1,0 +1,96 @@
+/* ------------------------------------------------------------------------ *
+    1: This stylesheet is strictly for sizesly-applicable layout / styles.
+    2: The styles here should be inlined within <head> to avoid render blocking css
+    3: Keep component styles in components.
+* ------------------------------------------------------------------------ */
+@import 'includes/variables-scss';
+@import 'includes/variables-root';
+@import 'includes/normalize';
+@import 'includes/typography';
+@import 'includes/animations';
+@import 'includes/shadows';
+@import 'helpers/mixins';
+@import 'includes/utilities';
+
+// 3rd party styles
+@import 'blocks/inputs/calendar';
+
+@import 'blocks/inputs/dragdrop';
+@import 'blocks/inputs/floating-label';
+@import 'blocks/inputs/form';
+@import 'blocks/inputs/check';
+@import 'blocks/inputs/range';
+@import 'blocks/inputs/validation';
+@import 'blocks/inputs/select';
+
+@import 'blocks/accessibility';
+@import 'blocks/agree';
+@import 'blocks/buttons';
+@import 'blocks/cards';
+@import 'blocks/chips';
+@import 'blocks/contact';
+@import 'blocks/callout';
+@import 'blocks/dividers';
+@import 'blocks/dropdowns';
+@import 'blocks/twitter';
+@import 'blocks/horizontal-scroll';
+@import 'blocks/icons';
+@import 'blocks/my-posts';
+@import 'blocks/results';
+@import 'blocks/ripple';
+@import 'blocks/searchform';
+@import 'blocks/sidebar';
+@import 'blocks/sidenav';
+@import 'blocks/sorting';
+@import 'blocks/stars';
+@import 'blocks/stepper';
+@import 'blocks/standout';
+@import 'blocks/posts/post';
+
+// Overrides should be lowest in the stylesheet
+@import 'blocks/pane';
+
+// base sizes styles
+@import 'sizes/base';
+
+// IPHONE 6/7/8
+// @media only screen and (min-width: 375px) {
+//     @import 'sizes/375up';
+// }
+
+// TABLET & SMALL MONITORS - iPad portrait.
+@media only screen and (min-width: 768px) {
+    @import 'sizes/768up';
+}
+
+// IPAD PRO AND DESKTOP
+// The average desktop screens / iPad Landscape / iPad Pro in portrait
+@media only screen and (min-width: 1024px) {
+    @import 'sizes/1024up';
+}
+
+//LARGE VIEWING SIZE
+// This is for the larger monitors and possibly full screen viewers.
+// @media only screen and (min-width: 1240px) {
+//     @import "sizes/1240up";
+// }
+// VERY COMMON LOW QUALITY SCREENS - 1377px wide
+// @media only screen and (min-width: 1360px) {
+//     @import "sizes/1360up";
+// }
+// MAIN DESKTOP DESIGN SIZE - 1440px wide
+@media only screen and (min-width: 1440px) {
+    @import 'sizes/1440up';
+}
+
+// Dark mode style overrides
+// @media (prefers-color-scheme: dark) {
+//     @import 'includes/variables-dark';
+// }
+
+// PRINT STYLESHEET
+// Remember to remove things that won't make sense to print at the bottom.
+// Things like nav, ads, and forms should be set to display none.
+// @media print {
+//     @import "print";
+// }

@@ -1,0 +1,91 @@
+<div class="floating-label {{ matStyle }}" [ngClass]="{float: float, disabled: disabled}">
+    <div *ngIf="prepend && prepend !== 'btn'"
+        class="prepend icon"
+        [ngClass]="{disabled: disabled}"
+        [attr.aria-label]="prepend">
+        {{ prepend }}
+    </div>
+
+    <button *ngIf="prepend === 'btn'"
+        type="button"
+        class="prepend btn__blue"
+        (click)="onPrependClick()"
+        [disabled]="disabled"
+        role="button"
+        tabindex="0">
+        {{ name }}
+    </button>
+
+    <div *ngIf="append && append !== 'btn'"
+        class="append icon"
+        [ngClass]="{disabled: disabled}"
+        [attr.aria-label]="append">
+        {{ append }}
+    </div>
+
+    <button *ngIf="append === 'btn'"
+        type="button"
+        class="append btn__blue"
+        (click)="onAppendClick()"
+        [disabled]="disabled"
+        role="button"
+        tabindex="4"
+    >
+        {{ name }}
+    </button>
+
+    <input *ngIf="type !== 'textarea'"
+        class="floating-label__input"
+        [type]="type"
+        [name]="name"
+        [attr.inputmode]="inputmode"
+        placeholder=" "
+        [value]="value"
+        [required]="required"
+        [autocomplete]="autocomplete"
+        [disabled]="disabled"
+        [maxLength]="maxLength"
+        (input)="onInput($event.target.value)"
+        (paste)="onInput($event.target.value)"
+        (focus)="onFocus()"
+        (blur)="onBlurred()"
+        tabindex="0"
+    />
+
+    <textarea *ngIf="type === 'textarea'"
+        class="floating-label__input"
+        [name]="name"
+        placeholder=" "
+        [value]="value"
+        [required]="required"
+        [disabled]="disabled"
+        [maxLength]="maxLength"
+        (input)="onInput($event.target.value)"
+        (paste)="onInput($event.target.value)"
+        (focus)="onFocus()"
+        (blur)="onBlurred()"
+        tabindex="0"
+    >
+    </textarea>
+
+    <div class="floating-label__outline">
+        <div class="floating-label__leading"></div>
+        <div class="floating-label__notch">
+            <label class="floating-label__label" for="{{ name }}">{{
+                label
+            }}</label>
+        </div>
+        <div class="floating-label__trailing"></div>
+    </div>
+
+    <!-- if there is source to filter -->
+    <typeahead-dropdown *ngIf="typeAhead"
+        ngModel
+        [active]="dropdownActive"
+        [term]="value"
+        [source]="typeAhead"
+        [displayKeys]="displayKeys"
+        [filterKeys]="filterKeys"
+        (selectionOutput)="setSelectedOption($event)">
+    </typeahead-dropdown>
+</div>

@@ -1,0 +1,84 @@
+/* ------------------------------------------------------------------------ *
+    NAVIGATION
+    Site-wide navigation styles
+* ------------------------------------------------------------------------ */
+.header__logo {
+}
+.header__review,
+.header__find {
+    justify-content: center;
+    padding: 20px 0;
+}
+.header__review {
+}
+.header__find {
+}
+.header__search {
+    min-width: 300px;
+}
+.header__more {
+    padding: 0 20px;
+}
+// visible when unauthed
+.header__login,
+.header__signup {
+}
+.header__login {
+}
+.header__signup {
+}
+// visible when authed
+.header__authed {
+}
+
+// main {
+//     flex: 1 1 25%;
+//     align-content: flex-start;
+//     height: calc(100vh - 55px);
+// }
+
+// .profile__grid{
+//     display: grid;
+//     grid-column-gap: 1.5vw;
+//     grid-template-columns:
+//         minmax(calc(calc(100% - 1440px) / 2), 1fr)
+//             minmax(250px, 250px)
+//             minmax(250px, 1190px)
+//         minmax(calc(calc(100% - 1440px) / 2), 1fr)
+// }
+
+main {
+    align-content: flex-start;
+    padding: 0 30px 0 30px;
+}
+
+.present {
+    width: 440px;
+}
+.present__option {
+    flex: 1;
+    margin: 10px 0;
+    max-width: 48px;
+}
+// An element with an active state
+.present__option-active {
+    flex: 100%;
+    max-width: 180px;
+}
+/* ------------------------------------------------------------------------ *
+    A RESPONSIVE FORM CONTAINER
+    Used in Home page, Login, Register forms
+* ------------------------------------------------------------------------ */
+.form-container {
+    width: 472px;
+    padding: 35px 40px 36px;
+
+    header {
+        margin: 0 0 15px 0;
+        h1,
+        h2,
+        p {
+            width: 100%;
+        }
+    }
+}

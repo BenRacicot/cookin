@@ -1,0 +1,14 @@
+<div class="content">
+    <ng-container *ngIf="(recipe$ | async) as recipe;">
+        <header>
+            <div class="heading__wrapper">
+                <button type="button" class="icon btn__back" (click)="back()">icon-backwards-arrow</button>
+                <h1>{{recipe.title}}</h1>
+            </div>
+        </header>
+        <div class="content__body">
+            <p [innerHTML]="recipe.summary"></p>
+        </div>
+        <img [src]="recipe.image" [alt]="recipe.title" />
+    </ng-container>
+</div>

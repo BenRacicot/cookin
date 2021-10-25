@@ -1,0 +1,31 @@
+<ul class="pagination">
+    <li
+        class="pagination-prev"
+        [ngClass]="{
+            disabled: page - 1 < 1 || loading
+        }"
+        (click)="goTo(page - 1)"
+    >
+        <a>❮</a>
+    </li>
+    <li
+        class="pagination-page"
+        *ngFor="let p of pages"
+        [ngClass]="{
+            active: p.page === page,
+            disabled: loading
+        }"
+        (click)="goTo(p.page)"
+    >
+        {{ p.page }}
+    </li>
+    <li
+        class="pagination-next"
+        [ngClass]="{
+            disabled: page + 1 > total || loading
+        }"
+        (click)="goTo(page + 1)"
+    >
+        <a>❯</a>
+    </li>
+</ul>

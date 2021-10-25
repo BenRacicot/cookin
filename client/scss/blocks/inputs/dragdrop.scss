@@ -1,0 +1,23 @@
+.drag__area {
+    flex: 1;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+
+    cursor: pointer;
+    background: rgb(var(--background));
+    border: 3px dashed rgb(var(--border));
+    border-radius: inherit;
+    transition: all 0.25s ease-in-out;
+    &:hover {
+        background: var(--background-hover);
+    }
+}
+
+.dragging-over {
+    background-color: rgb(158, 158, 158);
+}
+// .dropped is on a timer after drop action
+.dropped {
+}

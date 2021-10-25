@@ -1,0 +1,44 @@
+<ng-container *ngIf="(results$ | async) as results; else recommended">
+    <header *ngIf="(ingEntered$ | async) as ingsEntered;" class="results__header">
+        <p class="subtext ing__title">Ingredients</p>
+
+        <ul class="ings">
+            <li *ngFor="let ing of ingsEntered;" class="ing chip__sm">
+                {{ing}}
+            </li>
+        </ul>
+        <div class="results__count" *ngIf="results.totalResults > 0" >
+            <p class="subtext">{{results.totalResults}} results</p>
+        </div>
+    </header>
+
+    <ul class="cards">
+        <li *ngFor="let result of results.results;" class="card">
+            <a [routerLink]="['../page/'+result.id]" class="card__title">
+                {{result.title}}
+            </a>
+            <div class="card__body">
+                <ul class="ings">
+                    <!-- display the ingredients the user has entered -->
+                    <ng-container *ngIf="(ingEntered$ | async) as ingEntered;">
+                        <li *ngFor="let ing of ingEntered;" chip [wIcon]="true" [small]="true" icon="icon-check">{{ing}}</li>
+                    </ng-container>
+
+                    <!-- get ingredients from the recipe as chips -->
+                    <ng-container *ngFor="let ing of searchService.extractIngredients(result.missedIngredients);">
+                        <!-- compare recipe ingredients with the user's  -->
+                        <li class="ing chip__sm" chip>
+                            {{ing}}
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</ng-container>
+
+<ng-template #recommended>
+    <!-- <header class="results__header">
+        <p class="subtext ing__title">Recommended</p>
+    </header> -->
+</ng-template>

@@ -1,0 +1,5 @@
+<navigation [ngClass]="{'closed': closed}"></navigation>
+
+<div class="ro-wrapper" [@routerAnimation]="getRouteAnimation(router)">
+    <router-outlet #router="outlet"></router-outlet>
+</div>

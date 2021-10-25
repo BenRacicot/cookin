@@ -1,0 +1,46 @@
+<div class="nav__wrapper">
+
+    <div class="home__logo">
+        <div class="logo__wrapper">
+            <img class="logo" src="/assets/images/logo.svg"/>
+        </div>
+        <div class="wordmark__wrapper">
+            <img class="wordmark" src="/assets/images/wordmark.svg"/>
+        </div>
+    </div>
+
+    <div class="form__wrapper">
+        <div class="nav__logo">
+            <a class="nav__logo__link" routerLink="/" tabindex="0">
+                <img class="logo" src="/assets/images/wordmark.svg"/>
+            </a>
+        </div>
+
+        <form class="nav__search"
+            (ngSubmit)="onSubmit()"
+            [formGroup]="form">
+            <div class="input-group status" [ngClass]="{
+                'input--error': form.touched && !form.controls['search'].valid
+            }">
+                <!-- <input-validation [control]="form.controls['search']"></input-validation> -->
+                <form-field>
+                    <label class="group__label">
+                        <div class="search">
+                            <input-text
+                                formControlName="search"
+                                label="Search recipes or ingredients"
+                                append="btn"
+                                name="search">
+                            </input-text>
+                            <button type="submit" class="icon btn__submit">icon-magnify</button>
+                        </div>
+                    </label>
+                </form-field>
+            </div>
+        </form>
+    </div>
+
+    <!-- <nav class="nav__utility">-->
+    <!-- if needed -->
+    <!-- </nav>  -->
+</div>

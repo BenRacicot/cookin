@@ -1,0 +1,79 @@
+/* ------------------------------------------------------------------------ *
+    NAVIGATION
+    Site-wide navigation styles
+* ------------------------------------------------------------------------ */
+.navigation {
+    display: grid;
+    grid-template-columns: 65px minmax(275px, auto) minmax(200px, 1fr) auto auto auto;
+
+    height: 55px;
+}
+// HEADER STYLES
+.nav__logo {
+}
+.nav__ctas {
+    order: 2;
+    flex: 0 100%;
+}
+.nav__review,
+.nav__find {
+    justify-content: center;
+    flex: 0 calc(50% - 6px);
+    padding: 20px 0;
+    margin: 0 3px;
+    border-radius: 4px;
+}
+.nav__review {
+    order: 2;
+    padding: 0;
+}
+.nav__find {
+    order: 3;
+    padding: 0;
+}
+.nav__search {
+    order: 4;
+}
+.nav__feed {
+    display: flex;
+    order: 5;
+}
+.nav__more {
+    order: 6;
+    padding: 0 20px;
+}
+.nav__authed {
+    order: 7;
+}
+// shows to unauthed only
+.nav__login,
+.nav__signup {
+    margin: 0 10px 0 0;
+}
+.nav__login {
+    order: 8;
+    margin: 0 10px 0 0;
+}
+.nav__signup {
+    order: 9;
+}
+
+// POSTS
+.tweet__footer {
+    grid-column: 2 / -1;
+}
+
+/* ------------------------------------------------------------------------ *
+    SITEWIDE LAYOUT
+* ------------------------------------------------------------------------ */
+// main {
+// flex: 1 1 25%; // why?
+// }
+.content__primary {
+    max-width: 550px;
+    margin-top: 25px;
+}
+.content__secondary {
+    display: flex;
+    margin-top: 25px;
+}

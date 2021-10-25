@@ -1,0 +1,17 @@
+// https://a11yproject.com/posts/how-to-hide-content/
+.visually-hidden {
+    position: static !important;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    z-index: 999;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; // added line
+}

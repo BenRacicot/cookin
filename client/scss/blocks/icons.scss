@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'puppy-icon';
+    src: url('/assets/fonts/puppy-icon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+    color: rgb(var(--body-text));
+
+    flex: 0 0 auto; // in case the element used is flexbox
+}
+
+.icon {
+    font-family: 'puppy-icon' !important;
+    // font-size: 24px;// 1.412em; // 24x24 if base font is 16px (scales with ppi)
+    text-transform: none !important; // transforms break the icon font
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    speak: never;
+
+    // Enable Ligatures
+    letter-spacing: 0;
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga=1';
+    -moz-font-feature-settings: 'liga';
+    -ms-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga';
+    -webkit-font-variant-ligatures: discretionary-ligatures;
+    font-variant-ligatures: discretionary-ligatures;
+
+    // Better Font Rendering
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

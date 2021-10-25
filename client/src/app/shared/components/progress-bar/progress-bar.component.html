@@ -1,0 +1,8 @@
+<div class="progress">
+    <div
+        *ngIf="percent !== undefined"
+        class="determinate"
+        [style.width.%]="[percent]"
+    ></div>
+    <div *ngIf="percent === undefined" class="indeterminate"></div>
+</div>
