@@ -18,6 +18,9 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.results$ = this.searchService.results$.pipe();
+        this.results$.subscribe((res:any) => {
+            console.log(res);
+        });
         this.ingReturned$ = this.searchService.ingReturned$.pipe();
         this.ingEntered$ = this.searchService.ingEntered$.pipe();
     }

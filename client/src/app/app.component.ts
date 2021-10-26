@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { combineLatestWith, filter } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
 
 import { routerAnimation } from '@shared/animation/route-animations';
 import { SearchService } from '@shared/services/search.service';
@@ -14,24 +13,10 @@ import { SearchService } from '@shared/services/search.service';
 export class AppComponent {
     public closed = true;
 
-    constructor(
-        private searchService:SearchService,
-        private router: Router
-    ) { 
-
-        /* ------------------------------------------------------------------------ *  
-            when a route change ends 
-            check for search results
-            open or close the navigation-area
-        * ------------------------------------------------------------------------ */
-        this.router.events.pipe(
-            filter(e => e instanceof NavigationEnd),
-            combineLatestWith(this.searchService.results$)
-        ).subscribe((res:any) => {
-            const routerEvent:NavigationEnd = res[0];
-            const results = res[1];
-            this.closed = (routerEvent.url != "/" || (results !== null || results && results.results && results.results.length > 0)) ? true : false;       
-        }); 
+    constructor(private searchService:SearchService) { 
+        this.searchService.closedNav$.subscribe((res:boolean) => {
+            this.closed = res;
+        });         
     }
 
     ngOnInit(): void {}

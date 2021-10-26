@@ -1,18 +1,26 @@
 <div class="nav__wrapper">
 
     <div class="home__logo">
-        <div class="logo__wrapper">
-            <img class="logo" src="/assets/images/logo.svg"/>
+        <div class="logos__wrapper">
+            <div class="logo__wrapper">
+                <img class="logo" src="/assets/images/logo.svg"/>
+            </div>
+            <div class="wordmark__wrapper">
+                <img class="wordmark" src="/assets/images/wordmark-red.svg"/>
+            </div>
         </div>
-        <div class="wordmark__wrapper">
-            <img class="wordmark" src="/assets/images/wordmark.svg"/>
-        </div>
+    </div>
+
+    <div class="phrase__wrapper">
+        <p class="phrase__text">
+            Cook at home <br/>with confidence
+        </p>
     </div>
 
     <div class="form__wrapper">
         <div class="nav__logo">
-            <a class="nav__logo__link" routerLink="/" tabindex="0">
-                <img class="logo" src="/assets/images/wordmark.svg"/>
+            <a class="nav__logo__link" routerLink="/" tabindex="0" (click)="home($event)">
+                <img class="logo" src="/assets/images/wordmark-red.svg"/>
             </a>
         </div>
 

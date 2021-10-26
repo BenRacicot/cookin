@@ -16,12 +16,15 @@ export class PageComponent implements OnInit {
         private route: ActivatedRoute,
         private router:Router,
         private searchService:SearchService
-    ) {}
+    ) {
+        this.searchService.closeNav(true);
+    }
 
     ngOnInit(): void {
         this.recipe$ = this.route.firstChild.params.pipe(
             concatMap((params: Params) => this.searchService.getRecipe(params.id))
-        );  
+        );
+        this.searchService.closeNav(true);
     }
 
     public back(): void {

@@ -10,10 +10,6 @@ import { SearchService } from '@shared/services/search.service';
     styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-    public ingredients = [
-        { id: 0, name: 'onion' },
-        { id: 0, name: 'potato' }
-    ];
     public form = <FormGroup>this.fb.group({
         search: this.fb.control(null)
     });
@@ -29,14 +25,24 @@ export class NavigationComponent implements OnInit {
             watch for search results
             if a search occurs: navigate to home to see them
         * ------------------------------------------------------------------------ */
-        this.searchService.results$.subscribe((res:any) => {
+        this.searchService.results$.subscribe((res:any[] | null) => {
             if (res) {
                 this.router.navigate(['']);
+            } else {
+                this.form.patchValue({
+                    'search': null
+                });
             }
-        });        
+        });
     }
 
     public onSubmit(): void {
         this.searchService.getRecipes(this.form.value.search);
+    }
+
+    public home(e:Event): void {
+        e.preventDefault();
+        this.searchService.clearRecipes();
+        this.router.navigate(['']);
     }
 }

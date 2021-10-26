@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { NavigationEnd, Router } from '@angular/router';
+import { BehaviorSubject, combineLatestWith, filter, Observable, of, take } from 'rxjs';
 
 import { ApiService } from './api.service';
 
@@ -10,14 +10,36 @@ import { ApiService } from './api.service';
 export class SearchService {
     private _url = 'recipes';
     private _commaTest = new RegExp('[\,]', 'g');
-    public results$: BehaviorSubject<any> = new BehaviorSubject<any[] | null>(null);
-    public ingEntered$: BehaviorSubject<any> = new BehaviorSubject<any[] | null>(null);
-    public ingReturned$: BehaviorSubject<any> = new BehaviorSubject<any[] | null>(null);
+    public closedNav$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public results$: BehaviorSubject<any[] | null> = new BehaviorSubject<any[] | null>(null);
+    public ingEntered$: BehaviorSubject<any[] | null> = new BehaviorSubject<any[] | null>(null);
+    public ingReturned$: BehaviorSubject<any[] | null> = new BehaviorSubject<any[] | null>(null);
 
     constructor(
         private apiService: ApiService,
-        private router:Router
-    ) { }
+        private router:Router  
+    ) {
+        /* ------------------------------------------------------------------------ *  
+            when a route change ends 
+            check for search results
+            open or close the navigation-area
+                any component can toggle the nav size
+        * ------------------------------------------------------------------------ */
+        this.router.events.pipe(
+            filter(e => e instanceof NavigationEnd),
+            combineLatestWith(this.results$)
+        ).subscribe((res:any) => {
+            const routerEvent:NavigationEnd = res[0];
+            const results = res[1];
+            // this.closed = (routerEvent.url != "/" || (results !== null || results && results.results && results.results.length > 0)) ? true : false;       
+            let closed = results && results.results && results.results.length > 0 ? true : false;
+            this.closeNav(closed);
+        });         
+    }
+
+    public getRecipe(id: string): Observable<any> {
+        return this.apiService.get<any>(`${this._url}/${id}`);
+    }
 
     public getRecipes(query?: string): void {
         // A basic check if string contains a list
@@ -34,6 +56,16 @@ export class SearchService {
         });
     }
 
+    public clearRecipes(): void {
+        this.results$.next(null);
+        this.ingEntered$.next(null);
+        this.ingReturned$.next(null);
+    }
+
+    public closeNav(closed:boolean): void {
+        this.closedNav$.next(closed);
+    }
+
     // return ingredients from a recipe object
     public extractIngredients(ingArr: any[]): string[] {
         let ings = [];
@@ -47,7 +79,4 @@ export class SearchService {
         }
     }
 
-    public getRecipe(id: string): Observable<any> {
-        return this.apiService.get<any>(`${this._url}/${id}`);
-    }
 }

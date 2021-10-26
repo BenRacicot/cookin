@@ -7,38 +7,420 @@
                 {{ing}}
             </li>
         </ul>
-        <div class="results__count" *ngIf="results.totalResults > 0" >
+        <div class="results__count" *ngIf="results.totalResults > 0">
             <p class="subtext">{{results.totalResults}} results</p>
         </div>
     </header>
 
     <ul class="cards">
         <li *ngFor="let result of results.results;" class="card">
-            <a [routerLink]="['../page/'+result.id]" class="card__title">
-                {{result.title}}
-            </a>
-            <div class="card__body">
-                <ul class="ings">
-                    <!-- display the ingredients the user has entered -->
-                    <ng-container *ngIf="(ingEntered$ | async) as ingEntered;">
-                        <li *ngFor="let ing of ingEntered;" chip [wIcon]="true" [small]="true" icon="icon-check">{{ing}}</li>
-                    </ng-container>
+            <div class="card__image">
+                <img [src]="result.image" [alt]="result.title" />
+            </div>
 
-                    <!-- get ingredients from the recipe as chips -->
-                    <ng-container *ngFor="let ing of searchService.extractIngredients(result.missedIngredients);">
-                        <!-- compare recipe ingredients with the user's  -->
-                        <li class="ing chip__sm" chip>
-                            {{ing}}
-                        </li>
-                    </ng-container>
-                </ul>
+            <div class="card__content">
+                <a [routerLink]="['../page/'+result.id]" class="card__title">
+                    {{result.title}}
+                </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        <!-- display the ingredients the user has entered -->
+                        <ng-container *ngIf="(ingEntered$ | async) as ingEntered;">
+                            <li *ngFor="let ing of ingEntered;" class="ing__has" chip [wIcon]="true" [small]="true" icon="icon-check">{{ing}}</li>
+                        </ng-container>
+
+                        <!-- get ingredients from the recipe as chips -->
+                        <ng-container *ngFor="let ing of searchService.extractIngredients(result.missedIngredients);">
+                            <!-- compare recipe ingredients with the user's  -->
+                            <li class="ing__missing chip__sm" chip>
+                                {{ing}}
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
             </div>
         </li>
     </ul>
 </ng-container>
 
 <ng-template #recommended>
-    <!-- <header class="results__header">
-        <p class="subtext ing__title">Recommended</p>
-    </header> -->
+    <header class="results__header">
+        <p class="subtext ing__title">Italian Favorites</p>
+    </header>
+    <ul>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/648279-312x231.jpg" alt="Italian Tuna Pasta"></div>
+            <div class="card__content"><a class="card__title" href="/page/648279"> Italian Tuna Pasta </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> chillies </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> garlic </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> juice of lemon </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> parsley leaves </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> pasta shells </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> red bell pepper </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> tuna </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/648084-312x231.jpg" alt="Italian Caprese Sliders"></div>
+            <div class="card__content"><a class="card__title" href="/page/648084"> Italian Caprese Sliders </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> ground beef </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> italian sausage </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> italian seasoning </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> onion </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> bell pepper </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> garlic </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> mozzarella cheese </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> roma tomatoes </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> basil leaves </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> balsamic vinegar </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/648300-312x231.jpg" alt="Italian-Style Meatloaf"></div>
+            <div class="card__content"><a class="card__title" href="/page/648300"> Italian-Style Meatloaf </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> beef round roast </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> canned tomatoes </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> garlic </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> garlic powder </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> onions </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> oregano </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <header class="results__header">
+        <p class="subtext ing__title">Backyard BBQ</p>
+    </header>
+    <ul class="cards">
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/634476-312x231.jpg" alt="Bbq Chicken"></div>
+            <div class="card__content"><a class="card__title" href="/page/634476"> BBQ Chicken </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> catsup </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> chicken pieces </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> dry mustard </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> soy sauce </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> worcestershire sauce </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/634496-312x231.jpg" alt="BBQ Mac and Cheese"></div>
+            <div class="card__content"><a class="card__title" href="/page/634496"> BBQ Mac and Cheese </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> cottage cheese </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> parmesan cheese </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> ketchup </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> jalapeno </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> parsley </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> milk </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> garlic </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> onion </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> ground cumin </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> butter </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> cheddar cheese </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> breadcrumbs </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> macaroni </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/634486-312x231.jpg" alt="BBQ Beef Brisket"></div>
+            <div class="card__content"><a class="card__title" href="/page/634486"> BBQ Beef Brisket </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> beef brisket </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> onion powder </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> garlic powder </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> smoked paprika </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> cumin </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> cayenne pepper </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> barbecue sauce </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> cornstarch </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <header class="results__header">
+        <p class="subtext ing__title">Delicious Desserts</p>
+    </header>
+    <ul>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/1449043-312x231.jpg" alt="Easy Magic Cookie Bars"></div>
+            <div class="card__content"><a class="card__title" href="/page/1449043"> Easy Magic Cookie Bars </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> graham crackers </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> butter </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> semi chocolate chips </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> chocolate chips </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> peanut butter chips </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> coconut </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> pecans </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> condensed milk </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/635513-312x231.jpg" alt="Blueberry Pie With Sweet Almond Crust"></div>
+            <div class="card__content"><a class="card__title" href="/page/635513"> Blueberry Pie With Sweet Almond Crust </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> amaretto </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> blueberries </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> butter </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> cinnamon </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> egg </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> ground almonds </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> milk </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> orange juice </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> orange zest </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> shortening </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="card">
+            <div class="card__image"><img src="https://spoonacular.com/recipeImages/638717-312x231.jpg" alt="Chinese Steamed Flan"></div>
+            <div class="card__content"><a class="card__title" href="/page/638717"> Chinese Steamed Flan </a>
+                <div class="card__ings">
+                    <ul class="ings">
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> eggs </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> strawberries </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> vanilla </span>
+                        </li>
+                        
+                        <li chip class="ing__missing chip__sm chip">
+                            <span> whole milk </span>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
 </ng-template>

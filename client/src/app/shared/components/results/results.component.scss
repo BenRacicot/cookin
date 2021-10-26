@@ -1,3 +1,6 @@
+:host { 
+    padding: 15px 0 0 0; 
+}
 .results__header {
     padding: 20px 0 0 0;
 }
@@ -5,17 +8,57 @@
     display:flex;
     width:100%;
     margin: 0 0 7px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(var(--primary-color));
 }
 
 .cards {
-    margin: 20px 0;
+    margin: 0 0 20px 0;
+}
+.card {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid rgb(var(--static-border-color));
+}   
+.card__image {
+    flex: 0 1 150px;
+    overflow: hidden;
+    border-radius: 8px 0 0 8px;
+    img{
+        transform: scale(1.25);
+    }
 }
 .card__title{
     margin-bottom: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.card__content {
+    flex:1;
+    padding: 16px 16px 11px 16px;
+}
+
+.ings {
+    max-height: 53px;
+    overflow: hidden;
+}
+.ing__has {
+    background-color: rgb(var(--primary-color));
+    border: 1px solid rgb(var(--primary-color));
+}
+.ing__missing {
+
 }
 
 .results__count{
     margin-left: auto;
+    .subtext {
+        font-size: 13px;
+        font-weight: 500;    
+    }
 }
 
 .chip {

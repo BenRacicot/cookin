@@ -1,5 +1,9 @@
 :host{
     display: flex;
+    &.ing__has{
+        color:white;
+        fill:white;
+    }
 }
 
 // text content if it exists
