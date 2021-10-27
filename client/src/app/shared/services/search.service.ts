@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, combineLatestWith, filter, Observable, of, take } from 'rxjs';
+import { BehaviorSubject, combineLatestWith, filter, Observable, take } from 'rxjs';
 
 import { ApiService } from './api.service';
 
@@ -17,7 +17,7 @@ export class SearchService {
 
     constructor(
         private apiService: ApiService,
-        private router:Router  
+        private router:Router
     ) {
         /* ------------------------------------------------------------------------ *  
             when a route change ends 
