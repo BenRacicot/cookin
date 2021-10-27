@@ -4,15 +4,17 @@ CookIn is a monolithic recipe search engine application. The server runs on Nest
 Add your own Spoonacular API key to recipe-server/.env-cmdrc.js [docs](https://spoonacular.com/food-api/docs#Search-Recipes-Complex) [get one here](https://spoonacular.com/registerEmail)
 
 ## The Application
-1. `cd client` 
-2. `npm run start:local` for local app development 
-3. `npm run start:prod` to run with production environment variables
-4. Navigate to `http://localhost:4300/` to get cookin'
+1. `cd client`
+2. `npm i`
+3. `npm run start:local` for local app development 
+4. `npm run start:prod` to run with production environment variables
+5. Navigate to `http://localhost:4300/` to get cookin'
 
 ## The Server
 1. `cd recipe-server` 
-2. `npm run start:local` for local server development 
-3. `npm run start:prod` to run with production environment variables
+2. `npm i`
+3. `npm run start:local` for local server development 
+4. `npm run start:prod` to run with production environment variables
 
 ## Devops
 Solid environmental configuration is needed for ease of deployment as well as keeping environment-based code out of the project. Environment variables are enough to develop or deploy with environment-specific resources.
